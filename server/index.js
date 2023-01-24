@@ -3,10 +3,12 @@ const express = require("express");
 const mongodb = require("./config/mongodb");
 const routes = require("./routes/invoiceRoutes");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
 const server = express();
 
 server.listen(4100);
+server.use(cors());
 server.use(bodyParser.json());
 mongodb.connect();
 
