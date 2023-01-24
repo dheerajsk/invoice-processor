@@ -1,0 +1,14 @@
+Invoice Processor
+
+Create an application where companies can manage invoices for their clients.
+
+Features:
+
+1. Create a form page where invoices can be created.
+		Fields are: Customer name, OrderNo, Date, TaxAccountNumber, Customer Address, Order details, Order Amount, Quantity, Total, Total Tax, FinalAmount
+
+2. Create a table to display all the invoices in the system.
+
+3. Another form page to update invoice status (On hold, Submitted, Completed, Rejected)
+4. While changing the status, it should also show a note field.
+5. In the table highlight the status column in different colours based on the status (On hold-Yellow, Submitted: Blue, Completed: Green, Rejected-Red)
