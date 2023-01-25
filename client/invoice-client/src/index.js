@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ListInvoice from './ListInvoice/ListInvoice';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
@@ -14,6 +13,7 @@ root.render(
         <Routes>
           <Route path='/' element={<ListInvoice />}></Route>
           <Route path='new' element={<InvoiceForm />}></Route>
+          <Route path='/:id' element={<InvoiceForm />}></Route>
         </Routes>
       </BrowserRouter>
       

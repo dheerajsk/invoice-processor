@@ -30,6 +30,7 @@ function ListInvoice(){
       <th scope="col">Taxes</th>
       <th scope="col">Final Amount</th>
       <th scope="col">Status</th>
+      <th>Update</th>
     </tr>
   </thead>
   <tbody>
@@ -44,6 +45,11 @@ function ListInvoice(){
       <td>{i.taxes}</td>
       <td>{i.finalAmount}</td>
       <td>{i.status}</td>
+      <td>
+        <a href={i._id} className="btn btn-warning">
+          Update
+        </a>
+      </td>
     </tr>
     )
 }

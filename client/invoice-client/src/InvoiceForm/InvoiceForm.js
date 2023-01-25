@@ -1,11 +1,23 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 
 function InvoiceForm(){
 
     const [invoice, setInvoice] = useState({});
     const navigate = useNavigate();
+
+    const {id} = useParams();
+    console.log(id);
+    // update form
+    useEffect(()=>{
+        fetch("http://localhost:4100/api/invoice/"+id)
+        .then((res)=> res.json())
+            .then((parsedResult)=> {
+                console.log(parsedResult);
+                setInvoice(parsedResult);
+            });
+    }, []);
 
     function handleFormSubmit(event){
         event.preventDefault();
@@ -27,6 +39,7 @@ function InvoiceForm(){
                 <div className="mb-3">
                     <label htmlFor="" className="form-label">Enter Customer Name</label>
                     <input 
+                    readOnly={id}
                     value={invoice.customerName}
                     onInput={(e)=>{setInvoice({...invoice, customerName:e.target.value})}} 
                     
@@ -35,8 +48,9 @@ function InvoiceForm(){
                 <div className="mb-3">
                     <label htmlFor="" className="form-label">Enter Order #</label>
                     <input 
-                     value={invoice.orderNumber}
-                     onInput={(e)=>{setInvoice({...invoice, orderNumber:e.target.value})}} 
+                    readOnly={id}
+                     value={invoice.orderNo}
+                     onInput={(e)=>{setInvoice({...invoice, orderNo:e.target.value})}} 
                      type="number" className="form-control" />
                 </div>
                 <div className="row">
@@ -44,6 +58,7 @@ function InvoiceForm(){
                         <div className="mb-3">
                             <label htmlFor="" className="form-label">Enter Amount</label>
                             <input 
+                            readOnly={id}
                              value={invoice.amount}
                              onInput={(e)=>{setInvoice({...invoice, amount:e.target.value})}} 
                              type="number" className="form-control" />
@@ -53,6 +68,7 @@ function InvoiceForm(){
                             <div className="mb-3">
                             <label htmlFor="" className="form-label">Enter Quantity</label>
                             <input 
+                            readOnly={id}
                              value={invoice.quantity}
                              onInput={(e)=>{setInvoice({...invoice, quantity:e.target.value})}} 
                              type="number" className="form-control" />
@@ -64,8 +80,9 @@ function InvoiceForm(){
                         <div className="mb-3">
                             <label htmlFor="" className="form-label">Total Amount</label>
                             <input 
-                             value={invoice.totalAmount}
-                             onInput={(e)=>{setInvoice({...invoice, totalAmount:e.target.value})}} 
+                            readOnly={id}
+                             value={invoice.total}
+                             onInput={(e)=>{setInvoice({...invoice, total:e.target.value})}} 
                              type="number" className="form-control" />
                         </div>
                     </div>
@@ -73,8 +90,9 @@ function InvoiceForm(){
                             <div className="mb-3">
                             <label htmlFor="" className="form-label">Taxes</label>
                             <input 
-                             value={invoice.taxes}
-                             onInput={(e)=>{setInvoice({...invoice, taxes:e.target.value})}} 
+                            readOnly={id}
+                             value={invoice.totalTax}
+                             onInput={(e)=>{setInvoice({...invoice, totalTax:e.target.value})}} 
                              type="number" className="form-control" />
                         </div>
                     </div>
@@ -84,6 +102,7 @@ function InvoiceForm(){
                         <div className="mb-3">
                             <label htmlFor="" className="form-label">Final Amount</label>
                             <input 
+                            readOnly={id}
                             value={invoice.finalAmount}
                             onInput={(e)=>{setInvoice({...invoice, finalAmount:e.target.value})}} 
                             type="number" className="form-control" />

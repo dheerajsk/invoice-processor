@@ -29,3 +29,10 @@ module.exports.getAll= (cb)=>{
         cb(docs);
     })
 }
+
+module.exports.getByID= (id, cb)=>{
+    const collection = mongodb.getCollection("Invoices");
+    collection.findOne({_id:ObjectId(id)}).then((doc)=>{
+        cb(doc);
+    })
+}
