@@ -1,0 +1,15 @@
+
+.Submitted{
+    background-color: yellow !important;
+    color: black;
+}
+
+.Completed{
+    background-color: green !important;
+    color: white;
+}
+
+.Rejected{
+    background-color: red !important;
+    color: white;
+}

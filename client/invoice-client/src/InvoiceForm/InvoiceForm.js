@@ -24,7 +24,7 @@ function InvoiceForm(){
         console.log(invoice);
         fetch("http://localhost:4100/api/invoice",
         {
-            method:"POST",
+            method:invoice._id ? "PUT" : "POST",
             body:JSON.stringify(invoice),
             headers:{
                 'Content-Type':'application/json'

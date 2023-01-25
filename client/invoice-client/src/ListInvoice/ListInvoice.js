@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import "../ListInvoice/ListInvoice.css";
 
 function ListInvoice(){
 
@@ -44,7 +45,9 @@ function ListInvoice(){
       <td>{i.total}</td>
       <td>{i.taxes}</td>
       <td>{i.finalAmount}</td>
-      <td>{i.status}</td>
+      <td
+      className={i.status}
+      >{i.status}</td>
       <td>
         <a href={i._id} className="btn btn-warning">
           Update
